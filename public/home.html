@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="src/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="src/style.css" />
+
+    <title>Typing game</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-auto text-center mb-4"></div>
+
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-body text-center">
+              Type the word that appears before the specified time elapses.
+              <span class="main-timer"><b id="seconds">60</b></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="card game-card">
+            <div class="card-header">
+              <span
+                ><progress-ring
+                  stroke="8"
+                  radius="40"
+                  progress="0"
+                  max="10"
+                  class="word-timer"
+                  progress-style="circle{stroke:#03A9F4} text{fill:white}"
+                ></progress-ring
+              ></span>
+              <span class="score-span"><b id="score">0</b></span>
+            </div>
+            <div class="card-body text-center">
+              <h2 id="currentText" class="text-uppercase">TEXT</h2>
+              <input
+                type="text"
+                name="typedText"
+                id="typedText"
+                class="form-input"
+                placeholder="start typing ..."
+                autofocus
+              />
+              <span id="message"></span>
+            </div>
+            <div class="card-footer">
+              <span>Type the word in <b id="setTime">10</b> seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="startModal" class="modal">
+      <div class="modal-content justify-content-center">
+        <div class="row initRow">
+          <div class="col-md-12">
+            <!-- <p>Ready to prove that you are 10X typist</p> -->
+          </div>
+          <div class="col-md-5 mb-4 place-conetent-center">
+            <span class="joinError error d-none">Game ID not avialable</span>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                id="joinName"
+                required
+                minlength="2"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter game id"
+                id="joinId"
+                required
+                minlength="2"
+              />
+            </div>
+            <button class="btn btn-primary" id="joinGame">Join game</button>
+          </div>
+          <div
+            class="col-md-2 d-flex align-items-center justify-content-center"
+          >
+            <span class="text-gray">OR</span>
+          </div>
+          <div class="col-md-5 mb-4 place-conetent-center">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                id="createName"
+                required
+                minlength="2"
+              />
+            </div>
+            <button class="btn-close btn btn-primary" id="createGame">
+              Create game
+            </button>
+          </div>
+        </div>
+        <div class="row createRow d-none">
+          <div class="col-md-12">
+            <span class="gameId text-capitalize"
+              ><b>Game ID:<i>YUUUUU</i></b>
+            </span>
+            <p>
+              <small class="text-gray">Share game ID with others to join</small>
+            </p>
+          </div>
+          <div class="col-md-12">
+            <button class="btn btnStart">
+              Start Game <span class="waitingPlayerCount badge">2</span>
+            </button>
+          </div>
+        </div>
+        <div class="row joinRow d-none">
+          <div class="col-md-12">
+            <p class="text-gray">
+              Joined game with
+              <span class="waitingPlayerCount badge">2</span> others
+            </p>
+
+            <p>waiting for host<span class="blink">...</span></p>
+          </div>
+        </div>
+        <div class="row timerRow d-none">
+          <div class="col-md-12">
+            <progress-ring
+              stroke="8"
+              radius="70"
+              progress="0"
+              max="5"
+              class="timer"
+            ></progress-ring>
+          </div>
+        </div>
+        <!-- <button class="btn btn-primary">Sure, I'm Ready</button> -->
+      </div>
+    </div>
+    <div class="modal d-none" id="endModal">
+      <div class="modal-content justify-content-center">
+        <div class="row">
+          <div class="col-md-12">
+            <span><b>GAME OVER !!</b></span>
+            <div class="score-sheet"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/components.js"></script>
+    <script src="src/socket.js"></script>
+    <script src="src/multiplayer.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
