@@ -1,0 +1,11 @@
+{
+	"ImportPath": "github.com/olaysco/websock",
+	"GoVersion": "go1.12",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "ff2c4b7c35a07b0c1e90ce72aa7bfe41bb66a3cb"
+		}
+	]
+}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/olaysco/websock/controller"
 
@@ -40,8 +41,12 @@ var gameWords = []string{"ss", "ddd"}
 func main() {
 	http.Handle("/socket", websocket.Handler(Echo))
 	controller.Init()
+	var port = os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
 
-	if err := http.ListenAndServe(":1234", nil); err != nil {
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal("Listening and serving ", err)
 	}
 }

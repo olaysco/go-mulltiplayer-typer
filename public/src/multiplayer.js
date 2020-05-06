@@ -1,5 +1,5 @@
 class Multiplayer {
-  wsuri = "ws://127.0.0.1:1234/socket";
+  wsuri = `ws://${window.location.host}/socket`;
   playerList = null;
   gameId = null;
   id = null;
