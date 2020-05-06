@@ -1,12 +1,20 @@
 class Multiplayer {
-  wsuri = `ws://${window.location.host}/socket`;
+  wsuri = null;
   playerList = null;
   gameId = null;
   id = null;
 
   constructor() {
+    this.getWSUrl();
     this.getInstance();
     this.playerChangedListeners = [];
+  }
+
+  getWSUrl() {
+    let host = { "https:": "wss:", "http:": "ws:" };
+    this.wsuri = `${host[window.location.protocol]}//${
+      window.location.host
+    }/socket`;
   }
 
   init(payload) {
